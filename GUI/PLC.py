@@ -1,4 +1,3 @@
-import time
 from PyQt6 import uic
 from PyQt6.QtCore import (
     QThreadPool,
@@ -83,6 +82,4 @@ class PlcWindow(QMainWindow):
 
     def callback(self, plc_view: PlcViewModel):
         self.label_plc_rtc_time.setText(str(plc_view.plc.time_ms) + "ms")
-        self.label_plc_cycle_count.setText(
-            str(plc_view.plc.tasks[0].cycle_count)
-        )
+        self.label_plc_cycle_count.setText(str(plc_view.plc.task.cycle_count))

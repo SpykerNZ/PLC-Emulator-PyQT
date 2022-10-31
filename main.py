@@ -13,7 +13,7 @@ def app():
     task = PLCTask(name="Example Program", poll_rate=50, task=program)
 
     plc = Plc(timestep_ms=10)
-    plc.add_task(task)
+    plc.set_task(task)
 
     plc_view = PlcViewModel(plc)
     plc_window = PlcWindow(plc_view)

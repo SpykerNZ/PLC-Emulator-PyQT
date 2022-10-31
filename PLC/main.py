@@ -7,7 +7,7 @@ class Plc:
         self.timestep_ms = timestep_ms
         self.running = False
         self.time_ms = 0
-        self.tasks: list[PLCTask] = []
+        self.task: PLCTask = None
 
     def start(self):
         self.running = True
@@ -18,11 +18,10 @@ class Plc:
     def reset(self):
         self.running = False
         self.time_ms = 0
-        for task in self.tasks:
-            task.reset()
+        self.task.reset()
 
-    def add_task(self, task: PLCTask):
-        self.tasks.append(task)
+    def set_task(self, task: PLCTask):
+        self.task = task
 
     def update(self):
         if self.running:
@@ -30,9 +29,8 @@ class Plc:
 
     def _timestep(self):
         self.time_ms += self.timestep_ms
-        for task in self.tasks:
-            duration_since_last_run = self.time_ms - task.last_run_time_ms
-            if duration_since_last_run >= task.poll_rate:
-                task.cycle_count += 1
-                task.run()
-                task.last_run_time_ms = self.time_ms
+        duration_since_last_run = self.time_ms - self.task.last_run_time_ms
+        if duration_since_last_run >= self.task.poll_rate:
+            self.task.cycle_count += 1
+            self.task.run()  # todo: allow task to be run on different thread
+            self.task.last_run_time_ms = self.time_ms
