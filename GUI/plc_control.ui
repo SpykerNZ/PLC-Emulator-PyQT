@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>PLCEmulatorWindow</class>
+ <widget class="QMainWindow" name="PLCEmulatorWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>PLC Emulator</string>
   </property>
   <widget class="QWidget" name="plcWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -127,6 +127,9 @@
         <widget class="QSpinBox" name="timestepSpinBox">
          <property name="suffix">
           <string>ms</string>
+         </property>
+         <property name="minimum">
+          <number>1</number>
          </property>
          <property name="maximum">
           <number>1000</number>

@@ -12,17 +12,19 @@ from PyQt6.QtWidgets import (
 )
 from GUI.workers import CallbackWorker
 from PLC.main import Plc
+from PLC.sleep import RealtimeSleeper
 
 
 class PlcViewModel:
     def __init__(self, plc: Plc):
         self.plc = plc
+        self.realtime = RealtimeSleeper()
 
     def run(self, callback: pyqtBoundSignal):
         while True:
             self.plc.update()
             callback.emit(self)
-            time.sleep(0.1)
+            self.realtime.sleep(self.plc.timestep_ms)
 
     def start(self):
         self.plc.start()
@@ -81,4 +83,6 @@ class PlcWindow(QMainWindow):
 
     def callback(self, plc_view: PlcViewModel):
         self.label_plc_rtc_time.setText(str(plc_view.plc.time_ms) + "ms")
-        self.label_plc_cycle_count.setText(str(plc_view.plc.cycle_count))
+        self.label_plc_cycle_count.setText(
+            str(plc_view.plc.tasks[0].cycle_count)
+        )
