@@ -20,8 +20,8 @@ class ExampleWindow(QMainWindow):
             QPushButton, "stateButton"
         )
 
-        self.button_state.pressed.connect(self.button_press)
-        self.button_state.released.connect(self.button_released)
+        self.button_state.pressed.connect(lambda: self.button_press())
+        self.button_state.released.connect(lambda: self.button_released())
 
         self.threadpool = QThreadPool()
         self.worker = CallbackWorker(self.view_data.update)
