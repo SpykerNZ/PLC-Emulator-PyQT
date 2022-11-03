@@ -4,6 +4,7 @@ from GUI.PLC import PlcViewModel, PlcWindow
 from PLC.main import Plc
 from PLC.tasks import PLCTask
 from Programs.example import PRG_Example
+from Screens.example_screen import ExampleWindow
 
 
 def app():
@@ -18,6 +19,10 @@ def app():
     plc_view = PlcViewModel(plc)
     plc_window = PlcWindow(plc_view)
     plc_window.show()
+
+    program_window = ExampleWindow(program.view_data)
+    program_window.show()
+
     app.exec()
 
 

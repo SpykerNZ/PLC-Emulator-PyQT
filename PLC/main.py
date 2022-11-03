@@ -32,5 +32,5 @@ class Plc:
         duration_since_last_run = self.time_ms - self.task.last_run_time_ms
         if duration_since_last_run >= self.task.poll_rate:
             self.task.cycle_count += 1
-            self.task.run()  # todo: allow task to be run on different thread
+            self.task.run()
             self.task.last_run_time_ms = self.time_ms

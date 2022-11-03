@@ -14,11 +14,11 @@
    <string>Example</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="countOutputLabel">
+   <widget class="QLabel" name="countStaticLabel">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>90</y>
+      <x>100</x>
+      <y>40</y>
       <width>49</width>
       <height>16</height>
      </rect>
@@ -27,17 +27,43 @@
      <string>Count:</string>
     </property>
    </widget>
-   <widget class="QLabel" name="countStaticLabel">
+   <widget class="QLabel" name="countOutputLabel">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>90</y>
+      <x>170</x>
+      <y>40</y>
       <width>49</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
      <string>0</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="stateButton">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>90</y>
+      <width>91</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>State</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="stateOutputLabel">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>110</y>
+      <width>49</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>MISSING</string>
     </property>
    </widget>
   </widget>
